@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ARD Cross-Border Remittance Documentation</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Technical documentation for ARD Financial Group's cross-border remittance system using Lightspark Lightning Network">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <style>
+    :root {
+      --theme-color: #4f46e5;
+      --theme-color-dark: #4338ca;
+    }
+    .app-name-link img {
+      width: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">Loading documentation...</div>
+  <script>
+    window.$docsify = {
+      name: 'ARD Remittance Docs',
+      repo: 'https://github.com/anhbaysgalan1/lightspark-architecture',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      homepage: 'README_V2.md',
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: 'Search documentation...',
+        noData: 'No results found.',
+        depth: 3
+      },
+      pagination: {
+        previousText: 'Previous',
+        nextText: 'Next',
+        crossChapter: true,
+        crossChapterText: true,
+      },
+      copyCode: {
+        buttonText: 'Copy',
+        errorText: 'Error',
+        successText: 'Copied!'
+      },
+      plugins: [
+        function(hook, vm) {
+          hook.beforeEach(function(content) {
+            return content;
+          });
+          hook.afterEach(function(html, next) {
+            var footer = [
+              '<hr/>',
+              '<footer style="text-align: center; padding: 20px 0; color: #666;">',
+              '<p>ARD Financial Group - Cross-Border Remittance Documentation</p>',
+              '<p style="font-size: 0.9em;">Version 2.0 | Last Updated: November 2025</p>',
+              '<p style="font-size: 0.8em;">🚨 Contains critical V2.0 updates with immediate iDAX execution</p>',
+              '</footer>'
+            ].join('');
+            next(html + footer);
+          });
+        }
+      ]
+    }
+  </script>
+  <!-- Docsify core -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- Search plugin -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <!-- Copy code plugin -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+  <!-- Pagination plugin -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- Zoom image plugin -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- Emoji plugin -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+</body>
+</html>
