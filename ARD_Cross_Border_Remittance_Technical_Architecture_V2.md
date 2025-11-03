@@ -144,67 +144,22 @@ A Lightning Network-powered remittance service enabling:
 
 ## 3. Architecture Components
 
-### 3.1 User Account Structure
+### 3.1 Core System Functions
 
-```
-ARD User Account {
-  userId: string,
-  kycStatus: "verified" | "pending" | "rejected",
-  umaAddress: string,  // e.g., $anhaa@ard.mn
+**User Management:**
+- KYC verification and status tracking
+- UMA address assignment ($user@ard.mn)
+- Balance management (MNT and BTC)
+- Transaction limits and compliance
+- Linked bank accounts
 
-  balances: {
-    MNT: {
-      available: number,
-      pending: number,
-      reserved: number
-    },
-    BTC: {
-      available: number,
-      pending: number
-    }
-  },
-
-  limits: {
-    dailySendLimit: number,    // in MNT
-    dailyReceiveLimit: number,
-    perTransactionLimit: number
-  },
-
-  linkedBankAccounts: [{
-    bankName: string,
-    accountNumber: string,
-    accountHolder: string,
-    isVerified: boolean
-  }],
-
-  complianceData: {
-    riskScore: number,
-    lastAMLCheck: timestamp,
-    travelRuleRequired: boolean
-  }
-}
-```
-
-### 3.2 Transaction State Machine
-
-```
-Transaction States:
-1. INITIATED       → User submits transaction
-2. QUOTE_GENERATED → Rates locked for 60 seconds
-3. APPROVED        → User confirms
-4. FUNDING         → Debit user account
-5. CONVERTING      → BTC conversion (if needed)
-6. ROUTING         → Lightning/internal routing
-7. SETTLING        → Final settlement
-8. COMPLETED       → Success
-9. FAILED          → Rollback triggered
-10. REFUNDED       → User refunded
-
-State Transitions:
-INITIATED → QUOTE_GENERATED → APPROVED → FUNDING → CONVERTING → ROUTING → SETTLING → COMPLETED
-                                                                                    ↓
-                                                                                 FAILED → REFUNDED
-```
+**Transaction Processing:**
+- Quote generation with rate locking (60 seconds)
+- User approval workflow
+- Multi-currency conversion
+- Lightning Network routing
+- Settlement and confirmation
+- Automatic refunds for failed transactions
 
 ---
 
