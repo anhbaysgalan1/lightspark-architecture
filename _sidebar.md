@@ -3,7 +3,6 @@
 * **Getting Started**
   * [Home](README_V2.md)
   * [Quick Reference](QUICK_REFERENCE_V2.md)
-  * [Updates Summary](UPDATES_SUMMARY_V2.md)
 
 * **Architecture**
   * [Technical Architecture](ARD_Cross_Border_Remittance_Technical_Architecture_V2.md)
