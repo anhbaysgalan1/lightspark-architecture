@@ -922,17 +922,6 @@ This technical architecture provides a comprehensive solution for ARD Financial 
 7. **No Lightning Node Required**: Fully managed by Lightspark
 8. **Zero Price Risk**: Immediate iDAX execution for inbound transactions ✅
 
-### Critical V2.0 Improvements:
-
-🚨 **Immediate iDAX Execution for Inbound Lightning**
-- ❌ Old: Receive BTC → Hold → Daily reconciliation
-- ✅ New: Receive BTC → IMMEDIATELY sell on iDAX → Credit user
-
-**Why this matters:**
-- BTC can move 1-5% in 24 hours = real risk
-- Cost: Only 0.1% trading fee (~$0.02 per transaction)
-- Benefit: Zero price risk + instant user crediting
-
 ### Implementation Priority:
 
 **Phase 1** (Months 1-2): Internal ARD transfers (zero fee, instant)
