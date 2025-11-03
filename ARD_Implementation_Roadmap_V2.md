@@ -451,7 +451,7 @@ This roadmap outlines the implementation of ARD's cross-border remittance system
 
 ---
 
-## Phase 4: Inbound International (Weeks 9-12) 🚨 V2.0 CRITICAL UPDATES
+## Phase 4: Inbound International (Weeks 9-12) 
 
 ### Week 9: UMA Server Implementation
 
@@ -509,7 +509,7 @@ This roadmap outlines the implementation of ARD's cross-border remittance system
 
 ---
 
-### Week 10: Inbound Payment Processing 🚨 V2.0 CRITICAL UPDATE
+### Week 10: Inbound Payment Processing 
 
 **Objectives:**
 - Handle incoming Lightning payments

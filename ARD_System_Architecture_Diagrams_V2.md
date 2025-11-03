@@ -601,7 +601,7 @@ Trigger: Pool utilization > 80%
 
 ---
 
-## 6. Inbound Lightning Flow 🚨 V2.0 CRITICAL UPDATE
+## 6. Inbound Lightning Flow 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
