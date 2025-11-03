@@ -47,12 +47,6 @@ A Lightning Network-powered remittance service enabling:
 - **Optimal cost efficiency** while maintaining instant user experience
 - **No Lightning node operation required** - fully managed by Lightspark
 
-**Inbound transactions** (World → Mongolia): 🚨 **CRITICAL V2.0 UPDATE**
-- **IMMEDIATE idax execution** when BTC arrives via Lightning
-- **Zero price risk** - BTC sold for MNT instantly
-- **Better user experience** - funds available immediately
-- **Simple operations** - no reconciliation needed
-
 ---
 
 ## 2. System Overview
@@ -517,14 +511,14 @@ SAVINGS: 99.9% reduction in transaction costs!
 
 ### 5.3 Type C: Inbound International (Other Countries → Mongolia)
 
-🚨 **CRITICAL V2.0 UPDATE: IMMEDIATE idax EXECUTION**
+🚨 **CRITICAL: IMMEDIATE idax EXECUTION**
 
 **Use Case:** Someone abroad sends money to ARD user in Mongolia
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │      INBOUND INTERNATIONAL TRANSFER (USA → Mongolia)             │
-│      🚨 V2.0: IMMEDIATE IDAX EXECUTION (NO RECONCILIATION)      │
+│      🚨 IMMEDIATE IDAX EXECUTION (NO RECONCILIATION)      │
 └─────────────────────────────────────────────────────────────────┘
 
 Step 1: UMA Address Lookup

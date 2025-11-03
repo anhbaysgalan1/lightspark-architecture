@@ -69,7 +69,7 @@ Traditional (Western Union, MoneyGram): 5-10% + FX spread
 ARD: 0.5-1.5% (80-95% cheaper!)
 
 
-TYPE C: INBOUND INTERNATIONAL (Other Countries → Mongolia) 🚨 V2.0 UPDATE
+TYPE C: INBOUND INTERNATIONAL (Other Countries → Mongolia) 
 ═══════════════════════════════════════════════════════════════════════════════════
 Fee Structure: 0.5% - 1.0% (absorbed from FX spread)
 
@@ -77,7 +77,7 @@ Fee charged to: Sender's VASP (transparent to ARD user)
 ARD user receives: Full amount with small FX markup
 FX Markup: ~0.5-0.8% on BTC/MNT conversion
 
-🚨 V2.0: Immediate idax execution model
+🚨 Immediate idax execution model
 ────────────────────────────────────────
 When BTC arrives via Lightning:
 1. IMMEDIATELY sell BTC for MNT on idax (200-500ms)
@@ -386,7 +386,7 @@ Outbound:
 4. Lightspark/Recipient VASP converts BTC → Foreign Currency
 5. Recipient receives foreign currency
 
-Inbound 🚨 V2.0 UPDATE:
+Inbound:
 1. Sender sends foreign currency
 2. Their VASP converts Foreign Currency → BTC
 3. BTC sent via Lightning
