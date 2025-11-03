@@ -26,7 +26,7 @@ This package contains comprehensive documentation for implementing a cross-borde
 - Quick refresher
 
 **Contents:**
-- System roles (ARD APP, Custody, iDAX, Lightspark)
+- System roles (ARD APP, Custody, idax, Lightspark)
 - All 4 transaction types with flows
 - Fee structure
 - Economics and costs
@@ -43,7 +43,7 @@ This package contains comprehensive documentation for implementing a cross-borde
 - **Type A:** Internal ARD transfers (instant, zero-fee)
 - **Type B:** Outbound international (Mongolia → World)
 - **Type C:** Inbound international (World → Mongolia) 🚨 **CRITICAL FLOW**
-  - **NEW:** Immediate iDAX execution upon Lightning receipt
+  - **NEW:** Immediate idax execution upon Lightning receipt
   - **WHY:** Eliminates 12-24h price risk, better UX
 - **Type D:** External bank payouts
   - Mongolia: Real-time (instant-2h)
@@ -51,7 +51,7 @@ This package contains comprehensive documentation for implementing a cross-borde
 - Daily reconciliation (simplified for outbound only)
 - Error handling procedures
 
-**Key Update:** Inbound Lightning now triggers immediate iDAX sell order instead of waiting for daily reconciliation. This eliminates price risk and provides instant user crediting.
+**Key Update:** Inbound Lightning now triggers immediate idax sell order instead of waiting for daily reconciliation. This eliminates price risk and provides instant user crediting.
 
 ---
 
@@ -127,7 +127,7 @@ Lightning Network-powered remittance that is:
 
 ## 🔑 Key Innovations
 
-### 1. Immediate iDAX Execution for Inbound 🚨 NEW IN V2.0
+### 1. Immediate idax Execution for Inbound 🚨 NEW IN V2.0
 
 **The Challenge:**
 When Bitcoin arrives via Lightning Network, what do you do with it?
@@ -140,7 +140,7 @@ Problems: 12-24h price risk, delayed user crediting
 
 **✅ New Approach (V2.0):**
 ```
-Receive BTC → IMMEDIATELY sell on iDAX → Credit user → Done
+Receive BTC → IMMEDIATELY sell on idax → Credit user → Done
 Benefits: Zero price risk, instant user crediting, simple operations
 ```
 
@@ -157,7 +157,7 @@ Benefits: Zero price risk, instant user crediting, simple operations
 **For sending money OUT of Mongolia:**
 
 Instead of:
-- ❌ Each transaction: Buy BTC from iDAX → Transfer → Send (slow, expensive)
+- ❌ Each transaction: Buy BTC from idax → Transfer → Send (slow, expensive)
 
 We do:
 - ✅ Pre-fund a BTC pool (10-20 BTC) → Use instantly for transactions → Replenish daily
@@ -204,7 +204,7 @@ We do:
 **We just:**
 - Integrate via API
 - Handle user ledger
-- Manage conversions with iDAX
+- Manage conversions with idax
 
 ---
 
@@ -215,7 +215,7 @@ We do:
 │                    ARD ECOSYSTEM                             │
 │                                                              │
 │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐  │
-│  │  ARD APP     │◄──▶│  Custody     │◄──▶│  iDAX        │  │
+│  │  ARD APP     │◄──▶│  Custody     │◄──▶│  idax        │  │
 │  │  (Primary)   │    │  SaaS        │    │  (API)       │  │
 │  │              │    │  (Ledger)    │    │              │  │
 │  │  • Users     │    │              │    │  • Trading   │  │
@@ -259,10 +259,10 @@ We do:
 **Custody SaaS (Backend):**
 - Ledger/accounting platform
 - Tracks balances and transactions
-- Integrates with Lightspark and iDAX
+- Integrates with Lightspark and idax
 - Does NOT store KYC (gets from ARD APP)
 
-**iDAX Exchange (Minimal):**
+**idax Exchange (Minimal):**
 - Provides trading API only
 - Executes MNT/BTC conversions
 - Charges 0.1% trading fee
@@ -303,7 +303,7 @@ Fee: 1,000 MNT (1%)
 Battulga (USA) → Anhaa (Mongolia)
 $100 USD → 66,334 MNT
 
-Flow: Lightning → IMMEDIATE iDAX sell → Credit user
+Flow: Lightning → IMMEDIATE idax sell → Credit user
 Time: 3-6 seconds
 Fee: Built into rate (~0.8%)
 🚨 Key: Immediate execution (not daily reconciliation)
@@ -378,7 +378,7 @@ International: 1-2 days (ACH/SEPA), ~2% fee
 **Week 12:** Inbound international
 - World → Mongolia
 - UMA addresses active ($user@ard.mn)
-- Immediate iDAX execution live
+- Immediate idax execution live
 
 **Week 16:** Bank payouts
 - Cash out to Mongolia banks (real-time)
@@ -425,7 +425,7 @@ International: 1-2 days (ACH/SEPA), ~2% fee
 WHEN Lightning payment received:
   1. Verify webhook from Lightspark
   2. Extract BTC amount
-  3. 🚨 IMMEDIATELY call iDAX API:
+  3. 🚨 IMMEDIATELY call idax API:
      POST /api/v1/trade/execute
      {
        "action": "sell",
@@ -434,7 +434,7 @@ WHEN Lightning payment received:
        "for": "MNT",
        "type": "market"
      }
-  4. Receive MNT from iDAX
+  4. Receive MNT from idax
   5. Credit user account
   6. Update ARD's BTC pool ledger
   7. Mark transaction COMPLETED
@@ -510,7 +510,7 @@ NO blockchain, NO external calls
 Focus on:
 - Quick Reference (system overview)
 - Process Flows (how we'll use your API)
-- Type C flow (inbound with immediate iDAX execution)
+- Type C flow (inbound with immediate idax execution)
 - Questions about integration points
 
 ### For Internal ARD Team:
@@ -524,7 +524,7 @@ Focus on:
 
 ## ❓ FAQ
 
-### Q: Why immediate iDAX execution for inbound?
+### Q: Why immediate idax execution for inbound?
 **A:** Eliminates 12-24h of BTC price risk. Cost is minimal (0.2% fee), benefit is huge (zero risk + better UX).
 
 ### Q: Who owns the BTC pool?
@@ -533,8 +533,8 @@ Focus on:
 ### Q: Do we need to run Lightning nodes?
 **A:** No! Lightspark provides fully managed Lightning infrastructure. We just integrate via API.
 
-### Q: What if iDAX is down?
-**A:** Emergency procedures: use backup liquidity, queue transactions, alert system. SLA with iDAX ensures 99.9% uptime.
+### Q: What if idax is down?
+**A:** Emergency procedures: use backup liquidity, queue transactions, alert system. SLA with idax ensures 99.9% uptime.
 
 ### Q: How do Mongolia bank withdrawals work?
 **A:** Real-time domestic transfers (instant to 2 hours). Much faster than international (1-2 days).
@@ -549,8 +549,8 @@ Focus on:
 You now have a complete, corrected documentation package for ARD's cross-border remittance system.
 
 **Version 2.0 Key Improvements:**
-1. ✅ Inbound Lightning → Immediate iDAX execution (critical fix)
-2. ✅ Clear roles (ARD owns, Custody tracks, iDAX executes)
+1. ✅ Inbound Lightning → Immediate idax execution (critical fix)
+2. ✅ Clear roles (ARD owns, Custody tracks, idax executes)
 3. ✅ Simplified for audience (internal + Lightspark)
 4. ✅ Correct branding and naming
 5. ✅ All technical details accurate
@@ -558,7 +558,7 @@ You now have a complete, corrected documentation package for ARD's cross-border 
 **What Makes This Special:**
 
 1. **Pre-funded BTC pool** - 99.1% cost savings for outbound
-2. **Immediate iDAX execution** - Zero risk for inbound
+2. **Immediate idax execution** - Zero risk for inbound
 3. **Zero-fee internal** - Drive adoption
 4. **No Lightning node** - Lightspark handles it
 5. **18 weeks to launch** - Realistic timeline

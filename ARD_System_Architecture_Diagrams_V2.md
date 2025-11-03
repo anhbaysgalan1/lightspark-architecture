@@ -15,14 +15,14 @@
 │                         ARD FINANCIAL GROUP ECOSYSTEM                            │
 │                                                                                  │
 │  ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐          │
-│  │  ARD APP         │    │  Custody SaaS    │    │  iDAX Exchange   │          │
+│  │  ARD APP         │    │  Custody SaaS    │    │  idax Exchange   │          │
 │  │  (Frontend +     │◄──▶│  (Ledger +       │◄──▶│  (Trading API)   │          │
 │  │   Fund Mgmt)     │    │   Blockchain)    │    │                  │          │
 │  │                  │    │                  │    │                  │          │
 │  │  • User UI       │    │  • Ledger        │    │  • Trading       │          │
 │  │  • KYC/AML       │    │  • Accounting    │    │    API only      │          │
 │  │  • OWNS BTC POOL │    │  • Lightspark    │    │  • Minimal       │          │
-│  │  • Fund mgmt     │    │  • iDAX calls    │    │    role          │          │
+│  │  • Fund mgmt     │    │  • idax calls    │    │    role          │          │
 │  │  • User data     │    │  • Immediate     │    │  • 0.2% fee      │          │
 │  │                  │    │    execution     │    │                  │          │
 │  └──────────────────┘    └──────────────────┘    └──────────────────┘          │
@@ -189,7 +189,7 @@ LAYER 3: APPLICATION LAYER
 │  │                                                                         │ │
 │  │  3. INBOUND LIGHTNING SERVICE 🚨 V2.0 CRITICAL                         │ │
 │  │     • Webhook from Lightspark (payment received)                       │ │
-│  │     • IMMEDIATELY call iDAX trading API                                │ │
+│  │     • IMMEDIATELY call idax trading API                                │ │
 │  │     • Sell BTC for MNT (market order)                                  │ │
 │  │     • Credit user account with MNT                                     │ │
 │  │     • Update ARD APP's BTC pool ledger                                 │ │
@@ -243,7 +243,7 @@ LAYER 4: DATA LAYER
 LAYER 5: EXTERNAL INTEGRATIONS
 ═══════════════════════════════════════════════════════════════════════════════════
 ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
-│  LIGHTSPARK     │  │  iDAX EXCHANGE  │  │  ARD APP        │  │  PAYMENT        │
+│  LIGHTSPARK     │  │  idax EXCHANGE  │  │  ARD APP        │  │  PAYMENT        │
 │  API            │  │  (Trading API)  │  │  (KYC API)      │  │  PROCESSORS     │
 │  ─────────      │  │  ─────────────  │  │  ─────────      │  │  ─────────────  │
 │  • Lightning    │  │  • 🚨 IMMEDIATE │  │  • KYC data     │  │  • Mongolia     │
@@ -331,7 +331,7 @@ INTERNET
     │                     │                     │                     │
     ▼                     ▼                     ▼                     ▼
 ┌──────────┐      ┌──────────┐        ┌──────────┐         ┌──────────┐
-│Lightspark│      │  iDAX    │        │  ARD APP │         │ Banking  │
+│Lightspark│      │  idax    │        │  ARD APP │         │ Banking  │
 │   API    │      │ Exchange │        │ KYC API  │         │   APIs   │
 │          │      │          │        │          │         │          │
 │ (HTTPS)  │      │ (HTTPS)  │        │ (HTTPS)  │         │ (HTTPS)  │
@@ -540,7 +540,7 @@ DAILY RECONCILIATION FLOW (OUTBOUND ONLY):
      │
      ├─▶ Calculate yesterday's BTC flows
      │   • Outbound: Lightning payments sent (uses pool)
-     │   • 🚨 Inbound: NOT INCLUDED (already settled via iDAX)
+     │   • 🚨 Inbound: NOT INCLUDED (already settled via idax)
      │   • Payouts: Bank transfers
      │
      ├─▶ Calculate MNT flows
@@ -565,7 +565,7 @@ DAILY RECONCILIATION FLOW (OUTBOUND ONLY):
          • Email to stakeholders
 
 NOTE: 🚨 Inbound transactions NOT in reconciliation
-      (Already settled via immediate iDAX execution in V2.0)
+      (Already settled via immediate idax execution in V2.0)
 
 
 EMERGENCY REPLENISHMENT:
@@ -605,7 +605,7 @@ Trigger: Pool utilization > 80%
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│         INBOUND LIGHTNING TRANSACTION WITH IMMEDIATE iDAX EXECUTION              │
+│         INBOUND LIGHTNING TRANSACTION WITH IMMEDIATE idax EXECUTION              │
 │         🚨 V2.0: NO DAILY RECONCILIATION - SETTLE IMMEDIATELY                   │
 └─────────────────────────────────────────────────────────────────────────────────┘
 
@@ -628,16 +628,16 @@ Step 1: Lightning Payment Received
        │
        ▼
 
-Step 2: 🚨 IMMEDIATE iDAX EXECUTION (200-500ms)
+Step 2: 🚨 IMMEDIATE idax EXECUTION (200-500ms)
 ────────────────────────────────────────────────────────────────────
   CUSTODY SAAS
        │
        │  🚨 DO NOT WAIT! EXECUTE IMMEDIATELY!
        │
-       │  Call iDAX Trading API:
+       │  Call idax Trading API:
        ▼
   ┌──────────────────────────────────────────────┐
-  │  iDAX TRADING API                            │
+  │  idax TRADING API                            │
   │                                              │
   │  POST /api/v1/trade/execute                  │
   │  {                                           │
@@ -690,7 +690,7 @@ Step 4: Notify User
        ✅ DONE!
 
 TOTAL TIME: 3-6 seconds (end-to-end)
-COST TO ARD: 0.1% iDAX fee (~$0.10 on $100)
+COST TO ARD: 0.1% idax fee (~$0.10 on $100)
 PRICE RISK: ZERO ✅ (immediate conversion)
 
 🚨 NO DAILY RECONCILIATION NEEDED
@@ -703,7 +703,7 @@ WHY IMMEDIATE EXECUTION?
 ✅ Simple operations (no reconciliation tracking)
 ✅ Better user experience
 ✅ Lower operational risk
-✅ Cost: Only 0.1% iDAX fee (cheap!)
+✅ Cost: Only 0.1% idax fee (cheap!)
 ```
 
 ---
@@ -719,13 +719,13 @@ DEVELOPMENT ENVIRONMENT
 ═══════════════════════════════════════════════════════════════════════════════════
 • Local development setup
 • Lightspark Test Mode (REGTEST)
-• Mock iDAX API
+• Mock idax API
 • Hot reload for fast iteration
 
 STAGING ENVIRONMENT
 ═══════════════════════════════════════════════════════════════════════════════════
 • Lightspark Testnet
-• iDAX sandbox environment
+• idax sandbox environment
 • Full integration testing
 • E2E test suite
 • Load testing
@@ -744,7 +744,7 @@ Key Metrics:
 • Request rate, latency, error rate
 • BTC pool balance & utilization
 • Transaction volume & success rate
-• iDAX execution times (should be <500ms for inbound)
+• idax execution times (should be <500ms for inbound)
 • API response times
 • Database performance
 

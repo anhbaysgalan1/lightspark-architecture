@@ -77,23 +77,23 @@ Fee charged to: Sender's VASP (transparent to ARD user)
 ARD user receives: Full amount with small FX markup
 FX Markup: ~0.5-0.8% on BTC/MNT conversion
 
-🚨 V2.0: Immediate iDAX execution model
+🚨 V2.0: Immediate idax execution model
 ────────────────────────────────────────
 When BTC arrives via Lightning:
-1. IMMEDIATELY sell BTC for MNT on iDAX (200-500ms)
+1. IMMEDIATELY sell BTC for MNT on idax (200-500ms)
 2. Credit user account with MNT
 3. Transaction COMPLETED (no reconciliation needed)
 
-Cost to ARD: 0.1% iDAX trading fee
+Cost to ARD: 0.1% idax trading fee
 
 Example:
 • Battulga (USA) sends $100
 • Conversion: $100 → 0.00166 BTC (via Lightning)
-• iDAX execution: 0.00166 BTC → 66,334 MNT (immediate)
-• iDAX fee: 0.1% = 66 MNT (~$0.02)
+• idax execution: 0.00166 BTC → 66,334 MNT (immediate)
+• idax fee: 0.1% = 66 MNT (~$0.02)
 • Without markup: 67,000 MNT
 • With markup (1.0%): 66,334 MNT
-• ARD net revenue: 600 MNT (~$0.17) after iDAX fee
+• ARD net revenue: 600 MNT (~$0.17) after idax fee
 
 
 TYPE D: EXTERNAL BANK PAYOUTS
@@ -149,11 +149,11 @@ PRIMARY REVENUE: Transaction Fees
 
 2. Inbound International Transfers 🚨 V2.0 UPDATED
    • Volume: ~20% of international transactions
-   • Average markup: 0.8% (net of iDAX fee)
+   • Average markup: 0.8% (net of idax fee)
    • Expected monthly volume: 3,000 transactions
    • Average amount: 350,000 MNT equivalent
    • Monthly revenue: 3,000 × 350,000 × 0.8% = 8,400,000 MNT (~$2,450/mo)
-   • Note: Already includes iDAX 0.2% fee deduction
+   • Note: Already includes idax 0.2% fee deduction
 
 3. External Bank Payouts
    • Volume: ~10% of international transactions
@@ -168,7 +168,7 @@ ANNUAL: ~844,800,000 MNT (~$245,000/year)
 
 SECONDARY REVENUE: FX Spreads
 ═══════════════════════════════════════════════════════════════════════════════════
-• iDAX provides wholesale rates
+• idax provides wholesale rates
 • ARD applies 0.1-0.3% retail markup (outbound)
 • Additional revenue: ~10-20% of primary revenue
 • Estimated: ~8,500,000 MNT/month (~$2,500/month)
@@ -256,7 +256,7 @@ REPLENISHMENT PROCEDURES (OUTBOUND ONLY):
 Daily Reconciliation (Automated - 00:00 UTC):
 ──────────────────────────────────────────────
 1. Calculate net BTC flow (OUTBOUND ONLY)
-2. 🚨 NOTE: Inbound NOT included (already settled via immediate iDAX)
+2. 🚨 NOTE: Inbound NOT included (already settled via immediate idax)
 3. If deficit: Request BTC from ARD APP
 4. ARD APP transfers BTC to Lightspark wallet
 5. Verify pool restored to target
@@ -265,7 +265,7 @@ Daily Reconciliation (Automated - 00:00 UTC):
 🚨 V2.0 CRITICAL CHANGE:
 ────────────────────────
 Inbound Lightning transactions are NOT reconciled daily.
-They are settled immediately upon receipt via iDAX execution.
+They are settled immediately upon receipt via idax execution.
 
 Only outbound Lightning transactions consume from the pool and
 require daily reconciliation.
@@ -325,9 +325,9 @@ Sources of MNT:
 Uses of MNT:
 1. Credit users for inbound international payments 🚨 V2.0
    • Receive BTC via Lightning
-   • IMMEDIATELY sell BTC for MNT on iDAX
-   • Credit user account with MNT received from iDAX
-   • MNT comes directly from iDAX sale
+   • IMMEDIATELY sell BTC for MNT on idax
+   • Credit user account with MNT received from idax
+   • MNT comes directly from idax sale
 
 2. Internal transfers
    • User A → User B
@@ -391,7 +391,7 @@ Inbound 🚨 V2.0 UPDATE:
 2. Their VASP converts Foreign Currency → BTC
 3. BTC sent via Lightning
 4. We receive BTC
-5. 🚨 IMMEDIATELY execute iDAX: BTC → MNT
+5. 🚨 IMMEDIATELY execute idax: BTC → MNT
 6. User credited with MNT
 7. Transaction COMPLETED (no reconciliation)
 
@@ -402,7 +402,7 @@ FX RATE MANAGEMENT:
 ═══════════════════════════════════════════════════════════════════════════════════
 
 Rate Sources:
-1. iDAX Exchange
+1. idax Exchange
    • MNT/BTC spot rates
    • Real-time updates
    • Wholesale rates
@@ -415,7 +415,7 @@ Rate Sources:
 
 Rate Markup Strategy:
 ─────────────────────
-• Display rate = iDAX rate × Lightspark rate × (1 + our markup)
+• Display rate = idax rate × Lightspark rate × (1 + our markup)
 • Our markup: 0.1-0.3%
 • Transparent disclosure to users
 • Competitive vs banks (5-10% markup)
@@ -491,13 +491,13 @@ Daily BTC Pool Replenishment (Outbound only):
 • Total per settlement: ~$2
 • Monthly: 30 × $2 = $60/month
 
-iDAX Trading Fees (Inbound - IMMEDIATE execution):
+idax Trading Fees (Inbound - IMMEDIATE execution):
 ────────────────────────────────────────────────────
 • 🚨 V2.0: Immediate execution for ALL inbound Lightning
 • Volume: 3,000 inbound transactions/month
 • Average amount: $20 USD equivalent
 • Total volume: $60,000/month
-• iDAX fee: 0.1% = $60/month
+• idax fee: 0.1% = $60/month
 
 TOTAL SETTLEMENT: ~$120/month ($1,440/year)
 
@@ -523,7 +523,7 @@ TOTAL:               $22,580/month ($271,000/year)
 🚨 V2.0 NOTE: Costs are LOWER than V1.0 due to:
 • Reduced settlement costs (immediate execution simpler)
 • No reconciliation tracking for inbound transactions
-• Lower iDAX fees (only 0.1% on inbound, vs potential price risk)
+• Lower idax fees (only 0.1% on inbound, vs potential price risk)
 ```
 
 ### 3.2 Cost Savings Analysis
@@ -538,15 +538,15 @@ SCENARIO: 10,000 outbound international transactions per month
 OPTION A: REAL-TIME SETTLEMENT (Don't do this! ❌)
 ═══════════════════════════════════════════════════════════════════════════════════
 Every transaction requires:
-1. iDAX API call
-2. MNT → BTC conversion on iDAX
-3. BTC withdrawal from iDAX
+1. idax API call
+2. MNT → BTC conversion on idax
+3. BTC withdrawal from idax
 4. BTC transfer to Lightspark
 5. Lightning payment
 
 Costs per transaction:
-• iDAX trading fee: 0.1% × $29 avg = $0.029
-• iDAX withdrawal: 0.0001 BTC = $6
+• idax trading fee: 0.1% × $29 avg = $0.029
+• idax withdrawal: 0.0001 BTC = $6
 • Blockchain fee: $2-10
 • Processing time: 10-60 minutes
 • Total per TX: ~$8-16
@@ -588,7 +588,7 @@ Additional benefits:
 🚨 V2.0 INBOUND COST ANALYSIS:
 ═══════════════════════════════════════════════════════════════════════════════════
 
-IMMEDIATE iDAX EXECUTION vs DAILY RECONCILIATION:
+IMMEDIATE idax EXECUTION vs DAILY RECONCILIATION:
 
 OPTION A: Daily Reconciliation (Old model ❌)
 ──────────────────────────────────────────────
@@ -597,11 +597,11 @@ OPTION A: Daily Reconciliation (Old model ❌)
 • Example: $60,000 inbound volume × 3% drop = $1,800 loss
 • Complexity: Tracking, reconciliation overhead
 
-OPTION B: Immediate iDAX Execution (V2.0 ✅)
+OPTION B: Immediate idax Execution (V2.0 ✅)
 ────────────────────────────────────────────
 • Execute within 200-500ms of Lightning receipt
 • Price risk: ZERO ✅
-• Cost: 0.1% iDAX fee = $60/month on $60K volume
+• Cost: 0.1% idax fee = $60/month on $60K volume
 • Complexity: Simple, immediate settlement
 
 WINNER: Immediate execution
@@ -671,7 +671,7 @@ Risk Level: VERY LOW (V2.0 improvement ✅)
 
 Exposure:
 • Outbound: BTC held for 5-10 seconds only
-• Inbound: 🚨 BTC held for <1 second (immediate iDAX execution)
+• Inbound: 🚨 BTC held for <1 second (immediate idax execution)
 • Pre-funded pool: 10-20 BTC (owned by ARD APP, managed risk)
 
 🚨 V2.0 IMPROVEMENT:
@@ -680,7 +680,7 @@ OLD: Inbound BTC held 12-24h = significant price risk
 NEW: Inbound BTC sold in <500ms = ZERO price risk ✅
 
 Mitigation Strategies:
-✓ Immediate iDAX execution for inbound (V2.0)
+✓ Immediate idax execution for inbound (V2.0)
 ✓ Minimize holding time (5-10 seconds per outbound TX)
 ✓ Daily reconciliation to rebalance pool
 ✓ Natural hedging (pool managed by ARD APP)
@@ -703,7 +703,7 @@ Scenario:
 • MNT balance insufficient
 
 Mitigation:
-✓ iDAX provides MNT immediately (inbound execution)
+✓ idax provides MNT immediately (inbound execution)
 ✓ Maintain 500M-1B MNT float
 ✓ Real-time monitoring with alerts
 ✓ Emergency support from ARD APP (parent company)
@@ -711,7 +711,7 @@ Mitigation:
 
 🚨 V2.0 IMPROVEMENT:
 ────────────────────
-Immediate iDAX execution ensures MNT is received
+Immediate idax execution ensures MNT is received
 instantly from each inbound transaction, reducing
 the need for large MNT reserves.
 
@@ -721,14 +721,14 @@ RISK 3: SETTLEMENT FAILURE WITH IDAX
 Risk Level: LOW
 
 Scenario:
-• iDAX offline or technical issue
+• idax offline or technical issue
 • Can't execute immediate trades (inbound)
 • Can't replenish BTC pool (outbound)
 
 Mitigation:
-✓ iDAX owned by ARD Financial Group (internal)
+✓ idax owned by ARD Financial Group (internal)
 ✓ Direct API access and priority support
-✓ SLA with iDAX: 99.9% uptime
+✓ SLA with idax: 99.9% uptime
 ✓ Automatic retries with exponential backoff
 ✓ Alternative exchange backup (Binance, etc.)
 ✓ Can pause inbound processing if extended outage
@@ -830,7 +830,7 @@ MORNING (08:00-09:00):
 [ ] Check compliance queue (pending reviews)
 [ ] Review system health dashboard
 [ ] Check Lightspark service status
-[ ] Verify iDAX connectivity and rates
+[ ] Verify idax connectivity and rates
 [ ] Brief team on any issues
 
 
@@ -858,7 +858,7 @@ AUTOMATED (No Manual Action Required):
 ✓ Daily reconciliation (00:00 UTC) - Outbound only
 ✓ BTC pool monitoring (every 10 min)
 ✓ Transaction processing (real-time)
-✓ 🚨 Inbound iDAX execution (immediate, automatic)
+✓ 🚨 Inbound idax execution (immediate, automatic)
 ✓ Webhook handling (real-time)
 ✓ Alerts and notifications (real-time)
 ✓ Backups (every 6 hours)
@@ -948,7 +948,7 @@ This business operations document provides:
 
 1. ✅ Detailed fee structure (zero fees for internal, competitive for international)
 2. ✅ Treasury management strategy (pre-funded BTC pool owned by ARD APP)
-3. ✅ 🚨 V2.0: Immediate iDAX execution for inbound (eliminates price risk)
+3. ✅ 🚨 V2.0: Immediate idax execution for inbound (eliminates price risk)
 4. ✅ Comprehensive cost analysis (break-even in Month 6)
 5. ✅ Risk management framework (VERY LOW risk with V2.0 improvements)
 6. ✅ Daily operational procedures
@@ -956,11 +956,11 @@ This business operations document provides:
 
 **Key V2.0 Improvements:**
 
-1. **Inbound Lightning = Immediate iDAX Execution**
+1. **Inbound Lightning = Immediate idax Execution**
    - Zero price risk (BTC sold in <500ms)
    - Better user experience (immediate crediting)
    - Simpler operations (no reconciliation tracking)
-   - Cost: Only 0.1% iDAX fee (~$60/month)
+   - Cost: Only 0.1% idax fee (~$60/month)
 
 2. **Lower Operating Costs**
    - V1.0: $288,000/year
@@ -971,4 +971,4 @@ This business operations document provides:
    - Year 1 profit: $110,000 (vs $93,000 in V1.0)
    - Improvement: $17,000 more profit in Year 1
 
-**Key Takeaway:** The pre-funded BTC pool model (owned by ARD APP) combined with immediate iDAX execution for inbound transactions creates the optimal balance of cost efficiency, zero price risk, and excellent user experience.
+**Key Takeaway:** The pre-funded BTC pool model (owned by ARD APP) combined with immediate idax execution for inbound transactions creates the optimal balance of cost efficiency, zero price risk, and excellent user experience.

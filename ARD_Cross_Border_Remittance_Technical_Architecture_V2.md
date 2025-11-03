@@ -27,7 +27,7 @@
 ARD Financial Group ecosystem includes:
 - **ARD APP**: Consumer financial services platform
 - **Custody SaaS**: Blockchain wallet and ledger platform (like exchange backend)
-- **iDAX Exchange**: Cryptocurrency exchange (idax.exchange) - provides trading API
+- **idax Exchange**: Cryptocurrency exchange (idax.exchange) - provides trading API
 
 ### New Product: Cross-Border Remittance
 
@@ -43,12 +43,12 @@ A Lightning Network-powered remittance service enabling:
 
 **Outbound transactions** (Mongolia → World):
 - **Pre-funded BTC pool** owned by ARD APP (10-20 BTC)
-- **Daily batch reconciliation** with iDAX exchange
+- **Daily batch reconciliation** with idax exchange
 - **Optimal cost efficiency** while maintaining instant user experience
 - **No Lightning node operation required** - fully managed by Lightspark
 
 **Inbound transactions** (World → Mongolia): 🚨 **CRITICAL V2.0 UPDATE**
-- **IMMEDIATE iDAX execution** when BTC arrives via Lightning
+- **IMMEDIATE idax execution** when BTC arrives via Lightning
 - **Zero price risk** - BTC sold for MNT instantly
 - **Better user experience** - funds available immediately
 - **Simple operations** - no reconciliation needed
@@ -65,7 +65,7 @@ A Lightning Network-powered remittance service enabling:
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
 │  ┌────────────┐      ┌────────────┐      ┌────────────┐        │
-│  │    ARD     │      │  Custody   │      │    iDAX    │        │
+│  │    ARD     │      │  Custody   │      │    idax    │        │
 │  │    APP     │◄────▶│    SaaS    │◄────▶│  Exchange  │        │
 │  │  (UI/UX)   │      │  (Ledger)  │      │ (Trading)  │        │
 │  └────────────┘      └────────────┘      └────────────┘        │
@@ -121,13 +121,13 @@ A Lightning Network-powered remittance service enabling:
 - Transaction orchestration
 - Lightspark API integration
 - UMA protocol implementation
-- **Immediate iDAX execution** for inbound Lightning (V2.0)
+- **Immediate idax execution** for inbound Lightning (V2.0)
 - Mongolia banking integration
 - Daily reconciliation with ARD APP for outbound pool usage
 - **Does NOT store KYC** - gets from ARD APP via API
 - **Does NOT own BTC pool** - only tracks it in ledger
 
-#### iDAX Exchange (Trading API Provider - Minimal Role)
+#### idax Exchange (Trading API Provider - Minimal Role)
 - **Provides**: Trading API for MNT/BTC conversions
 - **Charges**: Trading fees (~0.1%)
 - **Does NOT**: Manage funds, treasury, or reconciliation
@@ -177,7 +177,7 @@ Instead of settling each transaction between ARD APP and Lightspark in real-time
 
 **For Inbound Transactions** (World → Mongolia): 🚨 **V2.0 CRITICAL UPDATE**
 1. **Receive** BTC via Lightning Network
-2. **IMMEDIATELY** execute iDAX market sell order
+2. **IMMEDIATELY** execute idax market sell order
 3. **Credit** user account with MNT
 4. **Update** ARD APP's BTC pool ledger
 5. **NO daily reconciliation needed** - already settled!
@@ -209,7 +209,7 @@ Outbound transactions consume from pool:
   ...
   - TX100: -0.003 BTC
 
-Inbound transactions: IMMEDIATE iDAX execution (no pool impact)
+Inbound transactions: IMMEDIATE idax execution (no pool impact)
   - RX1: +0.00166 BTC received → INSTANTLY sold for MNT
   - RX2: +0.002 BTC received → INSTANTLY sold for MNT
 
@@ -235,7 +235,7 @@ Day 2 - Morning Reconciliation (Automated):
    │                                      │  (Replenished)
 
 Note: Inbound transactions NOT included in reconciliation
-      (already settled via immediate iDAX execution)
+      (already settled via immediate idax execution)
 
 Day 2 - Operations continue...
   - Normal operations resume
@@ -385,7 +385,7 @@ Step 2: Quote Generation
               ┌─────────────────┼─────────────────┐
               ▼                 ▼                 ▼
         ┌──────────┐      ┌──────────┐     ┌──────────┐
-        │ UMA      │      │ iDAX     │     │Lightspark│
+        │ UMA      │      │ idax     │     │Lightspark│
         │ Lookup   │      │ Rate     │     │ Grid     │
         │          │      │ Query    │     │ Quote    │
         └──────────┘      └──────────┘     └──────────┘
@@ -419,7 +419,7 @@ Anhaa                           CUSTODY SAAS
   │                                   │
                                       ▼
 
-Step 4: BTC Pool Usage (NO iDAX real-time call!)
+Step 4: BTC Pool Usage (NO idax real-time call!)
 ────────────────────────────────────────────────────────────
                           CUSTODY SAAS
                                 │
@@ -435,7 +435,7 @@ Step 4: BTC Pool Usage (NO iDAX real-time call!)
                     │  Available: 9.99834 BTC│
                     └────────────────────────┘
                                 │
-                                │  NO iDAX call needed!
+                                │  NO idax call needed!
                                 │  Use pre-funded pool!
                                 │
                                 ▼
@@ -517,7 +517,7 @@ SAVINGS: 99.9% reduction in transaction costs!
 
 ### 5.3 Type C: Inbound International (Other Countries → Mongolia)
 
-🚨 **CRITICAL V2.0 UPDATE: IMMEDIATE iDAX EXECUTION**
+🚨 **CRITICAL V2.0 UPDATE: IMMEDIATE idax EXECUTION**
 
 **Use Case:** Someone abroad sends money to ARD user in Mongolia
 
@@ -615,17 +615,17 @@ USA Bank/Wallet                LIGHTSPARK
                                 │
                                 ▼
 
-Step 4: 🚨 IMMEDIATE iDAX EXECUTION (V2.0 CRITICAL CHANGE)
+Step 4: 🚨 IMMEDIATE idax EXECUTION (V2.0 CRITICAL CHANGE)
 ────────────────────────────────────────────────────────────
 CUSTODY SAAS
      │
      │  🚨 DO NOT WAIT! EXECUTE IMMEDIATELY!
      │
      │  1. BTC received: 0.00166 BTC
-     │  2. IMMEDIATELY call iDAX API
+     │  2. IMMEDIATELY call idax API
      ▼
 ┌──────────────────────────────────────────────┐
-│  iDAX TRADING API                            │
+│  idax TRADING API                            │
 │                                              │
 │  POST /api/v1/trade/execute                  │
 │  {                                           │
@@ -646,7 +646,7 @@ CUSTODY SAAS
 │  }                                           │
 └──────────────────────────────────────────────┘
      │
-     │  3. Received 66,334 MNT from iDAX
+     │  3. Received 66,334 MNT from idax
      │  4. Credit Anhaa's account: +66,334 MNT
      │  5. Update ARD APP's BTC pool ledger
      │  6. Transaction COMPLETED ✅
@@ -673,7 +673,7 @@ CUSTODY SAAS                   ARD APP
 
 TOTAL TIME: 3-6 seconds (end-to-end)
 FEE TO USER: Built into conversion rate (~0.5-1%)
-COST TO ARD: 0.1% iDAX fee (~$0.10 on $100)
+COST TO ARD: 0.1% idax fee (~$0.10 on $100)
 PRICE RISK: ZERO ✅ (immediate conversion)
 
 🚨 NO DAILY RECONCILIATION NEEDED
@@ -687,7 +687,7 @@ WHY IMMEDIATE EXECUTION?
 ✅ Better user experience
 ✅ Lower operational risk
 
-Cost: Only 0.1% iDAX fee (~$0.02 per $20 transaction)
+Cost: Only 0.1% idax fee (~$0.02 per $20 transaction)
       Much cheaper than 24h BTC price exposure risk!
 ```
 
@@ -727,7 +727,7 @@ Bold (ARD User)                CUSTODY SAAS
   │─────────────────────────────────▶│
   │                                 │
   │                              Query rates:
-  │                              - MNT/BTC from iDAX
+  │                              - MNT/BTC from idax
   │                              - BTC/USD from Lightspark
   │                                 │
   │  Quote:                         │
@@ -796,7 +796,7 @@ Via Lightspark Grid:
 - Grid API (bank payouts)
 - Webhook handlers
 
-**Custody SaaS → iDAX:**
+**Custody SaaS → idax:**
 - 🚨 **IMMEDIATE trade execution** (inbound BTC → MNT)
 - Rate queries (for quotes)
 - Daily reconciliation (outbound pool replenishment)
@@ -822,7 +822,7 @@ Scheduled for 00:00 UTC daily:
 4. Record reconciliation for audit trail
 
 Note: Inbound transactions NOT included
-      (already settled via immediate iDAX execution)
+      (already settled via immediate idax execution)
 ```
 
 ---
@@ -875,13 +875,13 @@ This technical architecture provides a comprehensive solution for ARD Financial 
 5. **Compliant**: Built-in Travel Rule, OFAC, KYC/AML support
 6. **Global Reach**: 140+ countries, 120+ currencies
 7. **No Lightning Node Required**: Fully managed by Lightspark
-8. **Zero Price Risk**: Immediate iDAX execution for inbound transactions ✅
+8. **Zero Price Risk**: Immediate idax execution for inbound transactions ✅
 
 ### Implementation Priority:
 
 **Phase 1** (Months 1-2): Internal ARD transfers (zero fee, instant)
 **Phase 2** (Months 2-3): Outbound international (Mongolia → World)
-**Phase 3** (Months 3-4): Inbound international with immediate iDAX execution
+**Phase 3** (Months 3-4): Inbound international with immediate idax execution
 **Phase 4** (Months 4-5): External bank payouts (ACH, SEPA, etc.)
 
 ---

@@ -16,7 +16,7 @@ This roadmap outlines the implementation of ARD's cross-border remittance system
 **Key Milestones:**
 - Week 4: Internal ARD transfers (zero-fee, instant)
 - Week 8: Outbound international transfers (Mongolia → World)
-- Week 12: Inbound international transfers (World → Mongolia) 🚨 **with immediate iDAX execution**
+- Week 12: Inbound international transfers (World → Mongolia) 🚨 **with immediate idax execution**
 - Week 16: External bank payouts (ACH, SEPA, PIX, etc.)
 - Week 18: Production launch
 
@@ -29,7 +29,7 @@ This roadmap outlines the implementation of ARD's cross-border remittance system
 - Total team: 4.5 FTE
 
 **Key V2.0 Updates:**
-- 🚨 **Immediate iDAX execution** for inbound Lightning transactions (Week 10)
+- 🚨 **Immediate idax execution** for inbound Lightning transactions (Week 10)
 - Daily reconciliation for **outbound only** (Week 11)
 - ARD APP owns BTC pool, Custody SaaS tracks in ledger
 - Simplified technical approach (no complex code examples)
@@ -59,13 +59,9 @@ This roadmap outlines the implementation of ARD's cross-border remittance system
 **Day 2-3: Development Environment**
 - [ ] Set up Git repository
 - [ ] Initialize backend project structure
-- [ ] Set up Docker Compose for local development:
-  - Database
-  - Cache
-  - API server
 - [ ] Configure environment variables
 - [ ] Set up code quality tools
-- [ ] Get production iDAX API credentials (direct integration)
+- [ ] Get production idax API credentials (direct integration)
 
 **Day 4-5: Cloud Infrastructure**
 - [ ] Set up cloud account
@@ -299,16 +295,16 @@ This roadmap outlines the implementation of ARD's cross-border remittance system
 
 ---
 
-### Week 6: iDAX Integration & Quote Engine
+### Week 6: idax Integration & Quote Engine
 
 **Objectives:**
-- Integrate with iDAX exchange
+- Integrate with idax exchange
 - Implement quote generation
 - Test MNT/BTC conversion rates
 
 **Tasks:**
 
-**Day 1-2: iDAX API Integration**
+**Day 1-2: idax API Integration**
 - [ ] Implement iDAXService class
 - [ ] Implement rate queries:
   - Get MNT/BTC spot rate
@@ -325,7 +321,7 @@ This roadmap outlines the implementation of ARD's cross-border remittance system
 **Day 3-4: Quote Generation Engine**
 - [ ] Implement QuoteService class
 - [ ] Implement multi-step quote generation:
-  1. Query iDAX for MNT/BTC rate
+  1. Query idax for MNT/BTC rate
   2. Query Lightspark for BTC/Foreign Currency rate
   3. Calculate total cost (amount + fees)
   4. Generate quote ID
@@ -345,7 +341,7 @@ This roadmap outlines the implementation of ARD's cross-border remittance system
 - [ ] Optimize caching strategy
 
 **Deliverables:**
-- ✅ iDAX integration complete
+- ✅ idax integration complete
 - ✅ Quote engine working
 - ✅ Rate caching optimized
 
@@ -513,42 +509,42 @@ This roadmap outlines the implementation of ARD's cross-border remittance system
 
 **Objectives:**
 - Handle incoming Lightning payments
-- 🚨 **IMMEDIATELY execute iDAX trade to convert BTC → MNT**
+- 🚨 **IMMEDIATELY execute idax trade to convert BTC → MNT**
 - Credit user accounts with MNT
 - Implement webhook processing
 
 **Tasks:**
 
-**Day 1-2: Webhook Handler + Immediate iDAX Execution 🚨**
+**Day 1-2: Webhook Handler + Immediate idax Execution 🚨**
 - [ ] Implement webhook endpoint for Lightspark
 - [ ] Verify webhook signatures
 - [ ] Handle payment received events
 - [ ] Extract payment details (amount, sender, etc.)
-- [ ] 🚨 **IMMEDIATELY call iDAX trading API:**
+- [ ] 🚨 **IMMEDIATELY call idax trading API:**
   - Execute market sell order (BTC → MNT)
   - Amount: Exact BTC received via Lightning
   - Type: MARKET (immediate execution)
   - Expected time: 200-500ms
-- [ ] Receive MNT from iDAX trade
+- [ ] Receive MNT from idax trade
 - [ ] Update ARD APP's BTC pool ledger
 - [ ] Write tests
 
 **Day 2-3: User Crediting Logic**
 - [ ] Implement InboundTransferService class
-- [ ] Receive MNT amount from iDAX execution
+- [ ] Receive MNT amount from idax execution
 - [ ] Credit user MNT balance (atomic transaction)
 - [ ] Create transaction record (status: COMPLETED)
 - [ ] Send push notification to user
-- [ ] Handle errors gracefully (retry iDAX call if needed)
+- [ ] Handle errors gracefully (retry idax call if needed)
 - [ ] Write tests
 
 **Day 4-5: Testing & Integration**
 - [ ] End-to-end testing
 - [ ] Send test payments from external wallets
 - [ ] Verify user receives MNT correctly
-- [ ] Verify iDAX execution happens immediately (<1 second)
+- [ ] Verify idax execution happens immediately (<1 second)
 - [ ] Test different amounts
-- [ ] Test error scenarios (iDAX API down, etc.)
+- [ ] Test error scenarios (idax API down, etc.)
 - [ ] Performance testing
 - [ ] Fix bugs
 
@@ -558,17 +554,17 @@ OLD (V1.0): Receive BTC → Mark for daily reconciliation → Settle next day
             ❌ Price risk (12-24 hours)
             ❌ Delayed user crediting
 
-NEW (V2.0): Receive BTC → IMMEDIATE iDAX execution (200-500ms) → Credit user
+NEW (V2.0): Receive BTC → IMMEDIATE idax execution (200-500ms) → Credit user
             ✅ Zero price risk
             ✅ Instant user crediting
             ✅ Simple operations
-            ✅ Cost: Only 0.2% iDAX fee
+            ✅ Cost: Only 0.2% idax fee
 ```
 
 **Deliverables:**
 - ✅ Inbound payments working end-to-end
 - ✅ Users credited with MNT automatically and IMMEDIATELY
-- ✅ iDAX execution happening in <1 second
+- ✅ idax execution happening in <1 second
 - ✅ Zero price risk achieved
 - ✅ Notifications sent
 
@@ -590,7 +586,7 @@ NEW (V2.0): Receive BTC → IMMEDIATE iDAX execution (200-500ms) → Credit user
   - Outbound Lightning payments (used from pool)
   - Bank payouts (used from pool)
   - Net BTC consumed from pool
-  - **Note:** Inbound NOT included (already settled via immediate iDAX)
+  - **Note:** Inbound NOT included (already settled via immediate idax)
 - [ ] Calculate yesterday's MNT flows:
   - MNT collected from users (outbound)
   - Track for reporting only
@@ -619,7 +615,7 @@ NEW (V2.0): Receive BTC → IMMEDIATE iDAX execution (200-500ms) → Credit user
 ```
 OLD (V1.0): Reconcile both inbound and outbound daily
 NEW (V2.0): Reconcile OUTBOUND ONLY
-            - Inbound already settled immediately via iDAX
+            - Inbound already settled immediately via idax
             - Simpler operations
             - Less tracking overhead
 ```
@@ -661,7 +657,7 @@ NEW (V2.0): Reconcile OUTBOUND ONLY
 
 **Day 4-5: Monitoring & Optimization**
 - [ ] Monitor inbound success rates
-- [ ] Monitor iDAX execution times (should be <1 second)
+- [ ] Monitor idax execution times (should be <1 second)
 - [ ] Monitor MNT balance
 - [ ] Verify immediate settlement working
 - [ ] Collect user feedback
@@ -933,7 +929,7 @@ NEW (V2.0): Reconcile OUTBOUND ONLY
 - [ ] Deploy mobile app to stores (App Store, Play Store)
 - [ ] Enable production Lightspark credentials
 - [ ] Coordinate with ARD APP for BTC pool setup
-- [ ] Enable production iDAX API
+- [ ] Enable production idax API
 - [ ] Enable production payment networks
 - [ ] Verify all systems operational
 - [ ] Enable monitoring and alerts
@@ -960,7 +956,7 @@ NEW (V2.0): Reconcile OUTBOUND ONLY
   - Success rates
   - User feedback
   - System performance
-  - iDAX execution times (inbound)
+  - idax execution times (inbound)
   - BTC pool utilization
 - [ ] Address any issues
 - [ ] Collect user feedback
@@ -983,7 +979,7 @@ NEW (V2.0): Reconcile OUTBOUND ONLY
 ### Month 1 Post-Launch
 
 - [ ] Daily monitoring of all KPIs
-- [ ] Verify immediate iDAX execution working smoothly
+- [ ] Verify immediate idax execution working smoothly
 - [ ] Monitor price risk (should be zero)
 - [ ] Collect and analyze user feedback
 - [ ] Fix bugs reported by users
@@ -1082,10 +1078,10 @@ NEW (V2.0): Reconcile OUTBOUND ONLY
    - Fallback: Queue transactions for retry
    - Support: Lightspark SLA and support channels
 
-2. **iDAX integration issues** 🚨 V2.0 CRITICAL
+2. **idax integration issues** 🚨 V2.0 CRITICAL
    - Mitigation: Test immediate execution early with production API
-   - Since ARD owns iDAX: Direct communication channel and production access
-   - Monitor: iDAX API uptime and execution times
+   - Since ARD owns idax: Direct communication channel and production access
+   - Monitor: idax API uptime and execution times
    - Backup: Alternative exchange (Binance, etc.) if needed
 
 3. **Lightning routing failures**
@@ -1129,7 +1125,7 @@ NEW (V2.0): Reconcile OUTBOUND ONLY
 ### Week 12 (Phase 3 Complete) 🚨 V2.0 ENHANCED
 - ✅ 20+ inbound international transfers per day
 - ✅ Daily reconciliation working (outbound only)
-- ✅ iDAX execution happening in <1 second for inbound
+- ✅ idax execution happening in <1 second for inbound
 - ✅ Zero price risk achieved
 - ✅ Users receiving money from abroad successfully
 
@@ -1166,11 +1162,11 @@ This 18-week roadmap provides a detailed, actionable plan to launch ARD's cross-
 
 ### Key V2.0 Innovations
 
-**The immediate iDAX execution model (Week 10) is the critical improvement that enables:**
+**The immediate idax execution model (Week 10) is the critical improvement that enables:**
 - ✅ **Zero price risk** - BTC sold in <1 second, not held for 12-24 hours
 - ✅ **Better UX** - Users credited immediately upon receipt
 - ✅ **Simpler operations** - No inbound reconciliation tracking needed
-- ✅ **Lower costs** - Only 0.2% iDAX fee vs potential 1-5% price volatility exposure
+- ✅ **Lower costs** - Only 0.2% idax fee vs potential 1-5% price volatility exposure
 - ✅ **Higher profit** - $110K Year 1 profit (vs $93K in old model)
 
 **The pre-funded BTC pool model (owned by ARD APP) enables:**

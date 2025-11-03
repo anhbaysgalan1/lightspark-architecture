@@ -56,12 +56,12 @@ TYPE C: INBOUND INTERNATIONAL ⚠️ CRITICAL FLOW
 Sender (International) ──────▶ User (Mongolia)
     [USD/Other Currency] ──▶ [BTC via Lightning] ──▶ [MNT]
 
-**IMPORTANT:** BTC is IMMEDIATELY sold on iDAX for MNT when received
+**IMPORTANT:** BTC is IMMEDIATELY sold on idax for MNT when received
 (NOT marked for daily reconciliation)
 
 Characteristics:
 • 5-10 second settlement
-• Immediate iDAX execution upon receipt
+• Immediate idax execution upon receipt
 • Low fees (0.5-1.5%)
 • No price risk (instant conversion)
 • Receive from 140+ countries
@@ -217,7 +217,7 @@ ACTORS:
 
 SUMMARY:
 ═══════════════════════════════════════════════════════════════
-✓ No external network calls (Lightning, iDAX, etc.)
+✓ No external network calls (Lightning, idax, etc.)
 ✓ Simple ledger transaction with atomic guarantees
 ✓ Instant settlement (< 100ms)
 ✓ Zero fees (internal transfer)
@@ -231,7 +231,7 @@ SUMMARY:
 
 ## Type C: Inbound International (CRITICAL UPDATED FLOW)
 
-### 🚨 IMPORTANT: Immediate iDAX Execution
+### 🚨 IMPORTANT: Immediate idax Execution
 
 **OLD FLOW (WRONG):**
 ```
@@ -240,7 +240,7 @@ Lightning arrives → Mark for daily reconciliation → Next day settle
 
 **NEW FLOW (CORRECT):**
 ```
-Lightning arrives → IMMEDIATELY execute iDAX sell order → Credit user → Complete
+Lightning arrives → IMMEDIATELY execute idax sell order → Credit user → Complete
 ```
 
 **Why immediate execution?**
@@ -262,7 +262,7 @@ ACTORS:
 • Sender's VASP: US wallet/bank
 • Custody SaaS: ARD backend ledger platform
 • ARD APP: Manages user data, KYC, liquidity
-• iDAX: Provides trading API
+• idax: Provides trading API
 • Lightspark: Lightning Network infrastructure
 
 ═══════════════════════════════════════════════════════════════════
@@ -298,7 +298,7 @@ Battulga (USA)          US Wallet App
   │              │ • Status: active ✓         │
   │              │ • Can receive ✓            │
   │              │                            │
-  │              │ (5) Query iDAX for rates:  │
+  │              │ (5) Query idax for rates:  │
   │              │     BTC → MNT rate         │
   │              │     1 BTC = 40,000,000 MNT │
   │              │                            │
@@ -359,10 +359,10 @@ US Wallet                  LIGHTSPARK
 PHASE 3: 🚨 IMMEDIATE IDAX EXECUTION (CRITICAL CHANGE)
 ═══════════════════════════════════════════════════════════════════
 
-CUSTODY SAAS                    iDAX API
+CUSTODY SAAS                    idax API
      │                              │
      │ (11) IMMEDIATE API call      │
-     │      to iDAX                 │
+     │      to idax                 │
      │──────────────────────────────▶│
      │                              │
      │  Request:                    │
@@ -406,7 +406,7 @@ CUSTODY SAAS
      │ (14) Update Ledger:
      │ ─────────────────
      │  • Received: 0.00166 BTC (from Lightning)
-     │  • Sold for: 66,334 MNT (from iDAX)
+     │  • Sold for: 66,334 MNT (from idax)
      │  • Credit Anhaa: +66,334 MNT
      │
      │ (15) Update ARD APP's BTC pool:
@@ -421,7 +421,7 @@ CUSTODY SAAS
      │  • Status: completed
      │  • BTC received: 0.00166
      │  • MNT credited: 66,334
-     │  • iDAX fee: 66 MNT
+     │  • idax fee: 66 MNT
      │  • Executed immediately: YES ✓
      │
      │ (17) Notify user
@@ -450,7 +450,7 @@ TIMING BREAKDOWN:
 ═══════════════════════════════════════════════════════════════════
 • Lightning routing: 2-5 seconds
 • Webhook processing: <100ms
-• iDAX sell execution: 200-500ms
+• idax sell execution: 200-500ms
 • Ledger update: <100ms
 • User notification: <100ms
 
@@ -468,7 +468,7 @@ KEY BENEFITS:
 COST PER TRANSACTION:
 ═══════════════════════════════════════════════════════════════════
 • Lightning fee: ~$0.05
-• iDAX trading fee: 0.2% = 132 MNT (~$0.035)
+• idax trading fee: 0.2% = 132 MNT (~$0.035)
 • Total cost: ~$0.085 per transaction
 
 vs OLD APPROACH (daily reconciliation):
@@ -577,7 +577,7 @@ Bold                        ARD APP
   │─────────────────────────────▶│
   │                              │
   │                              │ (2) Get quote:
-  │                              │     • Query iDAX: MNT/BTC
+  │                              │     • Query idax: MNT/BTC
   │                              │     • Query Lightspark: BTC/USD
   │                              │     • Calculate total
   │                              │
@@ -636,7 +636,7 @@ COST: ~2,000 MNT (2%) + network fees
 
 ## Daily Reconciliation (Simplified)
 
-**Note:** With immediate iDAX execution on inbound transactions, daily reconciliation is primarily for:
+**Note:** With immediate idax execution on inbound transactions, daily reconciliation is primarily for:
 1. Outbound Lightning transactions (using pre-funded pool)
 2. Bank payouts
 3. Pool balance verification
@@ -664,7 +664,7 @@ COST: ~2,000 MNT (2%) + network fees
 │                          │
 │ INBOUND:                 │
 │ • Already settled!       │
-│   (immediate iDAX exec)  │
+│   (immediate idax exec)  │
 │ • Just verify records    │
 │                          │
 │ PAYOUTS:                 │

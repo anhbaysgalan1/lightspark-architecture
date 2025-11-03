@@ -14,7 +14,7 @@
   * [Implementation Roadmap](ARD_Implementation_Roadmap_V2.md)
 
 * **Key Features**
-  * 🚨 Immediate iDAX Execution
+  * 🚨 Immediate idax Execution
   * ✅ Zero-fee Internal Transfers
   * ⚡ Pre-funded BTC Pool
   * 🌍 140+ Countries Support

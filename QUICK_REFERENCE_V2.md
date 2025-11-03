@@ -30,10 +30,10 @@ Cross-border remittance system for ARD APP using Lightspark's Lightning Network
 ### Custody SaaS
 - **Backend ledger** platform (like exchange backend)
 - **Tracks** all balances and transactions
-- **Integrates** with Lightspark and iDAX
+- **Integrates** with Lightspark and idax
 - **Does NOT** store KYC (gets from ARD APP)
 
-### iDAX Exchange
+### idax Exchange
 - **Provides** trading API only
 - **Executes** MNT/BTC conversions
 - **Charges** ~0.2% trading fee
@@ -95,15 +95,15 @@ Amount: $100 USD → ~66,334 MNT
 Flow:
 1. Battulga sends to $anhaa@ard.mn
 2. Lightning payment arrives (0.00166 BTC)
-3. 🚨 IMMEDIATELY execute iDAX sell order
-4. Receive 66,334 MNT from iDAX
+3. 🚨 IMMEDIATELY execute idax sell order
+4. Receive 66,334 MNT from idax
 5. Credit Anhaa: +66,334 MNT
 6. Update ARD's BTC pool ledger
 7. DONE
 
 Time: 3-6 seconds
 Fee to user: Built into conversion rate
-Cost to ARD: 0.1% iDAX fee (~$0.02)
+Cost to ARD: 0.1% idax fee (~$0.02)
 Key: NO DAILY RECONCILIATION (immediate settlement)
 ```
 
@@ -170,9 +170,9 @@ Method: Lightspark Grid API → ACH/SEPA/PIX
 - **Managed by:** ARD APP treasury team
 - **Tracked by:** Custody SaaS ledger
 
-### Immediate iDAX Execution (Inbound)
+### Immediate idax Execution (Inbound)
 - **When:** Lightning payment received
-- **Action:** Immediately sell BTC for MNT on iDAX
+- **Action:** Immediately sell BTC for MNT on idax
 - **Why:** Eliminates price risk, better UX
 - **Cost:** ~0.2% trading fee
 - **Time:** 200-500ms execution
@@ -207,7 +207,7 @@ Method: Lightspark Grid API → ACH/SEPA/PIX
 - Profit: ~$0.24 per transaction
 
 **Inbound International:**
-- Cost: ~$0.07 (Lightning + iDAX fee)
+- Cost: ~$0.07 (Lightning + idax fee)
 - Revenue: 0.8% markup = ~$0.23 (on $29 TX)
 - Profit: ~$0.16 per transaction
 
@@ -309,7 +309,7 @@ Method: Lightspark Grid API → ACH/SEPA/PIX
 
 ### Custody SaaS:
 - [ ] Lightspark account and API keys
-- [ ] iDAX trading API integration
+- [ ] idax trading API integration
 - [ ] Ledger system implemented
 - [ ] Webhook handlers set up
 
@@ -335,9 +335,9 @@ Method: Lightspark Grid API → ACH/SEPA/PIX
 
 ## 🔴 Most Important Points
 
-1. **Inbound Lightning = IMMEDIATE iDAX execution** (not daily reconciliation)
+1. **Inbound Lightning = IMMEDIATE idax execution** (not daily reconciliation)
 2. **ARD APP owns BTC pool** (Custody just tracks in ledger)
-3. **iDAX is minimal role** (just trading API)
+3. **idax is minimal role** (just trading API)
 4. **No Lightning node needed** (Lightspark handles everything)
 5. **Zero-fee internal transfers** (drive adoption)
 6. **Mongolia banks are real-time** (not 1-2 days)
