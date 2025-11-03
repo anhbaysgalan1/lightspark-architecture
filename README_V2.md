@@ -5,18 +5,6 @@
 **Date:** November 3, 2025
 **Version:** 2.0 (Critical Updates Applied)
 
----
-
-## 🚨 Version 2.0 Updates
-
-**Critical changes from Version 1.0:**
-1. ✅ **Inbound Lightning:** IMMEDIATE iDAX execution (not daily reconciliation)
-2. ✅ **Roles clarified:** ARD APP owns liquidity, Custody tracks, iDAX minimal
-3. ✅ **Branding:** ard.mn (not afgmongolia.com), ARD APP (not AFG Super App)
-4. ✅ **Mongolia banks:** Real-time withdrawals (not 1-2 days)
-5. ✅ **Technical level:** Simplified for internal team + Lightspark review
-
----
 
 ## 📋 Documentation Overview
 
